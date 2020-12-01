@@ -12,7 +12,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 #
 auth = HTTPBasicAuth('cisco', 'cisco')
 
-url = "https://csr1kv/restconf/data/Cisco-IOS-XE-native:native/interface/Loopback?fileds=name"
+url = "https://csr1kv/restconf/data/Cisco-IOS-XE-native:native/interface/Loopback?fields=name"
 
 headers = {
     'Accept': 'application/yang-data+json'
