@@ -20,7 +20,7 @@ loopback_interface_data = """<Loopback><name>1</name></Loopback>"""
 response = requests.request("POST", url, data=gigabit_interface_data, headers=xml_headers, verify=False, auth=auth)
 print (response.text)
 print ("Adding GigabitEthernet with name 1:")
-if (response.status_code==200):
+if (response.status_code==201):
     print ("Succeed")
 else:
     print ("Failed")
@@ -29,7 +29,7 @@ print("With status code: "+str(response.status_code))
 response = requests.request("POST", url, data=loopback_interface_data, headers=xml_headers, verify=False, auth=auth)
 print (response.text)
 print ("Adding Loopback interface with the name 1:")
-if (response.status_code==200):
+if (response.status_code==201):
     print ("Succeed")
 else:
     print ("Failed")
