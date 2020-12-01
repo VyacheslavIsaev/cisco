@@ -9,7 +9,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 #
 auth = HTTPBasicAuth('cisco', 'cisco')
 url = 'https://csr1kv/restconf/data/Cisco-IOS-XE-native:native/interface'
-xml_headers = {'Content-Type': 'application/vnd.yang.data+json'}
+xml_headers = {'Content-Type': 'application/yang-data+json'}
 
 response = requests.request("DELETE", url+'/Loopback=1', verify=False, auth=auth)
 print(response.text)
