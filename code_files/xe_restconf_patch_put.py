@@ -3,7 +3,7 @@ from requests.auth import HTTPBasicAuth
 import requests
 
 auth = HTTPBasicAuth('cisco', 'cisco')
-url = 'http://csr1kv/restconf/api/config/native/interface'
+url = 'https://csr1kv/restconf/data/Cisco-IOS-XE-native:native/interface'
 xml_headers = {'Content-Type': 'application/vnd.yang.data+xml'}
 
 loopback_interface_data_min = """ <Loopback><name>1</name></Loopback>"""

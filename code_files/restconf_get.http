@@ -1,0 +1,2 @@
+GET https://csr1kv/restconf/data/Cisco-IOS-XE-native:native/interface
+Authorization: Basic cisco:cisco

@@ -1,0 +1,2 @@
+GET https://csr1kv/restconf/data
+Authorization: Basic cisco:cisco
