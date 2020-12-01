@@ -14,7 +14,7 @@ xml_headers = {'Content-Type': 'application/vnd.yang.data+json'}
 response = requests.request("DELETE", url+'/Loopback=1', verify=False, auth=auth)
 print(response.text)
 print("Deleting Loopback interface with the name 1:")
-if (response.reason==200):
+if (response.status_code==200):
     print ("Succeed")
 else:
     print ("Failed")
