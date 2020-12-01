@@ -1,0 +1,2 @@
+GET http://csr1kv/restconf/data/Cisco-IOS-XE-native:native/interface/GigabitEthernet=1 
+Authorization: Basic cisco:cisco
