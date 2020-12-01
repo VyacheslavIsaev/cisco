@@ -18,3 +18,4 @@ if (response.status_code==200):
     print ("Succeed")
 else:
     print ("Failed")
+print("With status code: "+str(response.status_code))

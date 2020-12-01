@@ -24,6 +24,7 @@ if (response.status_code==200):
     print ("Succeed")
 else:
     print ("Failed")
+print("With status code: "+str(response.status_code))
 
 response = requests.request("POST", url, data=loopback_interface_data, headers=xml_headers, verify=False, auth=auth)
 print (response.text)
@@ -32,7 +33,7 @@ if (response.status_code==200):
     print ("Succeed")
 else:
     print ("Failed")
-
+print("With status code: "+str(response.status_code))
 
 
 
