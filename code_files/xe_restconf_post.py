@@ -12,7 +12,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 #
 auth = HTTPBasicAuth('cisco', 'cisco')
 url = 'https://csr1kv/restconf/data/Cisco-IOS-XE-native:native/interface'
-xml_headers = { }
+xml_headers = { 'Content-Type': 'application/yang-data+xml' }
 
 gigabit_interface_data  = """<GigabitEthernet><name>1</name></GigabitEthernet>"""
 loopback_interface_data = """<Loopback><name>1</name></Loopback>"""
