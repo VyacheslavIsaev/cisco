@@ -22,6 +22,8 @@ loopback_interface_data_primary_address = """<Loopback><name>1</name><ip><addres
 loopback_interface_data_secondary_address = """<Loopback><name>1</name><ip><address><secondary><address>10.101.1.3
 </address><mask>255.255.255.0</mask></secondary></address></ip></Loopback>"""
 
+response = requests.request("DELETE", url+'/Loopback=1', verify=False, auth=auth)
+
 response = requests.request("PUT", 
                         url+"/Loopback=1", 
                         data=loopback_interface_data_min,
@@ -29,6 +31,7 @@ response = requests.request("PUT",
                         verify=False, 
                         auth=auth)
 print("PUT status code: "+str(response.status_code))
+print("PUT status response:  \n"+response.text)
 
 response = requests.request("PATCH", 
                         url+"/Loopback", 
@@ -37,6 +40,7 @@ response = requests.request("PATCH",
                         verify=False, 
                         auth=auth)
 print("PATCH status code: "+str(response.status_code))
+print("PATCH status response:  \n"+response.text)
 
 response = requests.request("PUT", url+"/Loopback=1", 
                         data=loopback_interface_data_secondary_address, 
@@ -44,6 +48,7 @@ response = requests.request("PUT", url+"/Loopback=1",
                         verify=False, 
                         auth=auth)
 print("PUT status code: "+str(response.status_code))
+print("PUT status response:  \n"+response.text)
 
 response = requests.request("PATCH",
                         url+"/Loopback", 
@@ -52,10 +57,11 @@ response = requests.request("PATCH",
                         verify=False, 
                         auth=auth)
 print("PATCH status code: "+str(response.status_code))
+print("PATCH status response:  \n"+response.text)
 
 response = requests.request("GET",
                         url+"/Loopback=1", 
                         headers=xml_headers, 
                         verify=False, 
                         auth=auth)
-print("Interface configuration: \n"+str(response.status_code))
+print("Interface configuration: \n"+response.text)
