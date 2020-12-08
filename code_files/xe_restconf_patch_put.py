@@ -16,6 +16,7 @@ url = 'https://csr1kv/restconf/data/Cisco-IOS-XE-native:native/interface'
 xml_headers = {'Content-Type': 'application/yang-data+xml'}
 
 loopback_interface_data_min = """<Loopback><name>1</name></Loopback>"""
+
 loopback_interface_data_primary_address = """<Loopback><name>1</name><ip><address><primary><address>10.101.1.2
 </address><mask>255.255.255.0</mask></primary></address></ip></Loopback>"""
 
@@ -24,6 +25,7 @@ loopback_interface_data_secondary_address = """<Loopback><name>1</name><ip><addr
 
 response = requests.request("DELETE", url+'/Loopback=1', verify=False, auth=auth)
 
+print("\nCreating interface")
 response = requests.request("PUT", 
                         url+"/Loopback=1", 
                         data=loopback_interface_data_min,
@@ -32,7 +34,7 @@ response = requests.request("PUT",
                         auth=auth)
 print("PUT status code: "+str(response.status_code))
 print("PUT status response:  \n"+response.text)
-
+print("\nConfiguring interface with PATCH.")
 response = requests.request("PATCH", 
                         url+"/Loopback", 
                         data=loopback_interface_data_primary_address,
@@ -42,6 +44,7 @@ response = requests.request("PATCH",
 print("PATCH status code: "+str(response.status_code))
 print("PATCH status response:  \n"+response.text)
 
+print("\nAttempt to use PUT to configure interface.")
 response = requests.request("PUT", url+"/Loopback=1", 
                         data=loopback_interface_data_secondary_address, 
                         headers=xml_headers, 
@@ -50,8 +53,9 @@ response = requests.request("PUT", url+"/Loopback=1",
 print("PUT status code: "+str(response.status_code))
 print("PUT status response:  \n"+response.text)
 
+print("\nUsing PATCH to add secondary interface.")
 response = requests.request("PATCH",
-                        url+"/Loopback", 
+                        url+"/Loopback=1", 
                         data=loopback_interface_data_secondary_address, 
                         headers=xml_headers, 
                         verify=False, 
