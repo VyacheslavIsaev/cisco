@@ -20,8 +20,19 @@ loopback_interface_data_min = """<Loopback><name>1</name></Loopback>"""
 loopback_interface_data_primary_address = """<Loopback><name>1</name><ip><address><primary><address>10.101.1.2
 </address><mask>255.255.255.0</mask></primary></address></ip></Loopback>"""
 
-loopback_interface_data_secondary_address = """<Loopback><name>1</name><ip><address><secondary><address>10.101.1.3
-</address><mask>255.255.255.0</mask></secondary></address></ip></Loopback>"""
+loopback_interface_data_secondary_address = """
+<Loopback>
+    <name>1</name>
+    <ip>
+        <address>
+            <secondary>
+                    <address>10.101.1.3</address>
+                    <mask>255.255.255.0</mask>
+                    <secondary/>
+            </secondary>
+        </address>
+    </ip>
+</Loopback>"""
 
 response = requests.request("DELETE", url+'/Loopback=1', verify=False, auth=auth)
 
@@ -34,6 +45,7 @@ response = requests.request("PUT",
                         auth=auth)
 print("PUT status code: "+str(response.status_code))
 print("PUT status response:  \n"+response.text)
+
 print("\nConfiguring interface with PATCH.")
 response = requests.request("PATCH", 
                         url+"/Loopback", 
